@@ -73,6 +73,9 @@ jobs:
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
         with:
           context: .
+          build-args: |
+            PANET_USERNAME=${{ secrets.PANET_USERNAME }}
+            PANET_PASSWORD=${{ secrets.PANET_PASSWORD }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
